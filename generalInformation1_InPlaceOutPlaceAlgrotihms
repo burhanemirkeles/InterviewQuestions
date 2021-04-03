@@ -1,0 +1,78 @@
+All algorithms can be classified into in-place and out-of-place algorithms based on the amount of extra space
+used by them. In this quick article, we’ll explore the difference between the two.
+
+In-Place Algorithms:
+    1.An in-place algorithm transforms the input without using any extra memory.
+    As the algorithm executes, the input is usually overwritten by the output, and no additional space is needed
+    for this operation.
+    2.An in-place algorithm may require a small amount of extra memory for its operation.
+    However, the amount of memory required must not be dependent on the input size and should be constant.
+    3.Several sorting algorithms rearrange the input into sorted order in-place, such as insertion sort, selection sort,
+    quick sort, bubble sort, heap sort, etc. All these algorithms require a constant amount of extra space for
+    rearranging the elements in the input array.
+    4.Usually, an algorithm is categorized as an in-place or an out-of-place algorithm based on the explicit storage
+    allocated by the algorithm. However, calling a recursive algorithm as in-place is highly debatable
+    since extra space is being used by the call stack. Although this space required by the call stack
+    technically takes the recursive algorithms out of the in-place algorithms category,
+    the algorithms requiring only O(log(n)) additional space is considered to be in-place.
+    5.In-place algorithms are usually used in an embedded system that runs in limited memory.
+    They reduce the space requirements to a great extent, but the algorithm time complexity increases in some cases.
+
+Out-of-Place Algorithms:
+    1.An algorithm that is not in-place is called a not-in-place or out-of-place algorithm.
+    Unlike an in-place algorithm, the extra space used by an out-of-place algorithm depends on the input size.
+    2.The standard merge sort algorithm is an example of out-of-place algorithm
+    as it requires O(n) extra space for merging. The merging can be done in-place,
+    but it increases the time complexity of the sorting routine.
+
+
+We can implement most of the algorithms in-place as well as out-of-place.
+Let’s illustrate that by taking an example of reversing an array of integers in Java:
+
+
+1. The idea is to create a new array of the same type and size, fill it with elements from the original array
+in reverse order, and finally copy the contents of the new array into the original one.
+Since this implementation requires O(n) extra space, this is not-in-place.
+
+    // Utility function to reverse elements of an array
+    public static void reverse(int[] A)
+    {
+        int[] B = new int[A.length];
+
+        for (int i = 0; i < A.length; i++) {
+            B[A.length - 1 - i] = A[i];
+        }
+
+        for (int i = 0; i < A.length; i++) {
+            A[i] = B[i];
+        }
+    }
+
+2.An in-place algorithm requires only a fixed number of integers for the auxiliary variables i, j, and temp,
+irrespective of the input’s size. This can be done by reading the elements from both ends of the array
+and swapping them, as shown below:
+
+    // Utility function to reverse elements of an array without using extra space
+    public static void inPlaceReverse(int[] A)
+    {
+        for (int i = 0, j = A.length - 1; i < j; i++, j--)
+        {
+            int temp = A[i];
+            A[i] = A[j];
+            A[j] = temp;
+        }
+    }
+
+
+We can even do this using a single auxiliary variable i, as shown below:
+
+    // Utility function to reverse elements of an array without using extra space
+    public static void inPlaceReverse(int[] A)
+    {
+        for (int i = 0; i <= (A.length-2)/2; i++)
+        {
+            A[i] = A[i] ^ A[A.length-1-i];
+            A[A.length-1-i] = A[i] ^ A[A.length-1-i];
+            A[i] = A[i] ^ A[A.length-1-i];
+        }
+    }
