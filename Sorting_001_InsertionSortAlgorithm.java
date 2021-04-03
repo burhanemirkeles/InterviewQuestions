@@ -39,6 +39,13 @@ public class Sorting_001_InsertionSortAlgorithm {
 
     Implementation
     Insertion Sorting Algorithm can implemented in two ways which iterative and recursive ways.
+
+    Insertion Sort Performance
+    The worst-case time complexity of insertion sort is O(n^2), where n is the size of the input. The worst case happens
+    when the array is reverse sorted. The best-case time complexity of insertion sort is O(n) when happens the array
+    is already sorted.
+    The auxilary space used by the iterative version is O(1) and O(n) by the recursive versions for the call stack.
+
      */
 
     // Function to perform insertion sort on `arr[]`
