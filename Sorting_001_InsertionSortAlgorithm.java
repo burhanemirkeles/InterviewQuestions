@@ -96,6 +96,7 @@ public class Sorting_001_InsertionSortAlgorithm {
         }
     }
 
+
     public static void main(String[] args)
     {
         int[] arr = { 3, 8, 5, 4, 1, 9, -2 };
