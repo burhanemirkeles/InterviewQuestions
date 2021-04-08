@@ -5,5 +5,7 @@ This repository is not just a copy of online sources, I rewrite almost 90% of co
 
 Original resource: Techie Delight. link below:
 https://www.techiedelight.com/data-structures-and-algorithms-problems/
+
+The node classes are not implemented on every single solution, If needed implement it as required.
  
 
